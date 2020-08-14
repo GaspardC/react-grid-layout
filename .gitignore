@@ -3,7 +3,7 @@ dist/*
 !dist/react-grid-layout.min*
 !dist/*.html
 npm-debug.log
-build/
+# build/ needed if fetch from github repo without npm
 .idea
 # Ignore built example files
 examples/*.html
