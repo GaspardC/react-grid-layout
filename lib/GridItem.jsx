@@ -54,6 +54,7 @@ type Props = {
   static?: boolean,
   useCSSTransforms?: boolean,
   usePercentages?: boolean,
+  resizableProps?: Object,
   transformScale: number,
   droppingPosition?: DroppingPosition,
 
@@ -153,6 +154,9 @@ export default class GridItem extends React.Component<Props, State> {
     // Use CSS transforms instead of top/left
     useCSSTransforms: PropTypes.bool.isRequired,
     transformScale: PropTypes.number,
+
+    // Resizable props
+    resizableProps: PropTypes.object,
 
     // Others
     className: PropTypes.string,
@@ -335,12 +339,14 @@ export default class GridItem extends React.Component<Props, State> {
    * Mix a Resizable instance into a child.
    * @param  {Element} child    Child element.
    * @param  {Object} position  Position object (pixel values)
+   * @param {Object} [resizableProps] Additional props to React-Resizable
    * @return {Element}          Child wrapped in Resizable.
    */
   mixinResizable(
     child: ReactElement<any>,
     position: Position,
-    isResizable: boolean
+    isResizable: boolean,
+    resizableProps?: Object
   ): ReactElement<any> {
     const { cols, x, minW, minH, maxW, maxH, transformScale } = this.props;
     const positionParams = this.getPositionParams();
@@ -371,6 +377,7 @@ export default class GridItem extends React.Component<Props, State> {
         onResizeStart={this.onResizeStart}
         onResize={this.onResize}
         transformScale={transformScale}
+        {...resizableProps}
       >
         {child}
       </Resizable>
@@ -579,7 +586,8 @@ export default class GridItem extends React.Component<Props, State> {
       isDraggable,
       isResizable,
       droppingPosition,
-      useCSSTransforms
+      useCSSTransforms,
+      resizableProps = {}
     } = this.props;
 
     const pos = calcGridItemPosition(
@@ -616,7 +624,7 @@ export default class GridItem extends React.Component<Props, State> {
     });
 
     // Resizable support. This is usually on but the user can toggle it off.
-    newChild = this.mixinResizable(newChild, pos, isResizable);
+    newChild = this.mixinResizable(newChild, pos, isResizable, resizableProps);
 
     // Draggable support. This is always on, except for with placeholders.
     newChild = this.mixinDraggable(newChild, isDraggable);

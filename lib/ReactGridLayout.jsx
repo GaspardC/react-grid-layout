@@ -100,6 +100,7 @@ export default class ReactGridLayout extends React.Component<Props, State> {
     verticalCompact: true,
     compactType: "vertical",
     preventCollision: false,
+    resizableProps: {},
     droppingItem: {
       i: "__dropping-elem__",
       h: 1,
@@ -459,7 +460,8 @@ export default class ReactGridLayout extends React.Component<Props, State> {
       rowHeight,
       maxRows,
       useCSSTransforms,
-      transformScale
+      transformScale,
+      resizableProps
     } = this.props;
 
     // {...this.state.activeDrag} is pretty slow, actually
@@ -482,6 +484,7 @@ export default class ReactGridLayout extends React.Component<Props, State> {
         isBounded={false}
         useCSSTransforms={useCSSTransforms}
         transformScale={transformScale}
+        resizableProps={resizableProps}
       >
         <div />
       </GridItem>
@@ -513,7 +516,8 @@ export default class ReactGridLayout extends React.Component<Props, State> {
       useCSSTransforms,
       transformScale,
       draggableCancel,
-      draggableHandle
+      draggableHandle,
+      resizableProps
     } = this.props;
     const { mounted, droppingPosition } = this.state;
 
@@ -554,6 +558,7 @@ export default class ReactGridLayout extends React.Component<Props, State> {
         useCSSTransforms={useCSSTransforms && mounted}
         usePercentages={!mounted}
         transformScale={transformScale}
+        resizableProps={resizableProps}
         w={l.w}
         h={l.h}
         x={l.x}
