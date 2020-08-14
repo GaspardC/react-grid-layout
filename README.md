@@ -1,3 +1,35 @@
+## Changes added in this fork :
+
+You can add these props to data-grid object through a prop called **resizableProps** from [react-resizable](https://github.com/STRML/react-resizable)
+
+### Example
+
+```js
+data-grid={{ resizableProps: { lockAspectRatio: true }}}
+```
+### Props
+```js
+{
+  children: React.Element<any>,
+  width: number,
+  height: number,
+  // Either a ReactElement to be used as handle, or a function returning an element that is fed the handle's location as its first argument.
+  handle: ReactElement<any> | (resizeHandle: 's' | 'w' | 'e' | 'n' | 'sw' | 'nw' | 'se' | 'ne') => ReactElement<any>,
+  // If you change this, be sure to update your css
+  handleSize: [number, number] = [10, 10],
+  lockAspectRatio: boolean = false,
+  axis: 'both' | 'x' | 'y' | 'none' = 'both',
+  minConstraints: [number, number] = [10, 10],
+  maxConstraints: [number, number] = [Infinity, Infinity],
+  onResizeStop?: ?(e: SyntheticEvent, data: ResizeCallbackData) => any,
+  onResizeStart?: ?(e: SyntheticEvent, data: ResizeCallbackData) => any,
+  onResize?: ?(e: SyntheticEvent, data: ResizeCallbackData) => any,
+  draggableOpts?: ?Object,
+  resizeHandles?: ?Array<'s' | 'w' | 'e' | 'n' | 'sw' | 'nw' | 'se' | 'ne'> = ['se']
+};
+``` 
+
+
 # React-Grid-Layout
 
 [![travis build](https://travis-ci.org/STRML/react-grid-layout.svg?branch=master)](https://travis-ci.org/STRML/react-grid-layout)
