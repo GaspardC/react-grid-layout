@@ -472,6 +472,7 @@ export default class ReactGridLayout extends React.Component<Props, State> {
         x={activeDrag.x}
         y={activeDrag.y}
         i={activeDrag.i}
+        resizableProps={activeDrag.resizableProps}
         className="react-grid-placeholder"
         containerWidth={width}
         cols={cols}
@@ -484,7 +485,6 @@ export default class ReactGridLayout extends React.Component<Props, State> {
         isBounded={false}
         useCSSTransforms={useCSSTransforms}
         transformScale={transformScale}
-        resizableProps={resizableProps}
       >
         <div />
       </GridItem>

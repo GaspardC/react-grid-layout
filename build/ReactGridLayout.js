@@ -556,6 +556,7 @@ var ReactGridLayout = /*#__PURE__*/function (_React$Component) {
         x: activeDrag.x,
         y: activeDrag.y,
         i: activeDrag.i,
+        resizableProps: activeDrag.resizableProps,
         className: "react-grid-placeholder",
         containerWidth: width,
         cols: cols,
@@ -567,8 +568,7 @@ var ReactGridLayout = /*#__PURE__*/function (_React$Component) {
         isResizable: false,
         isBounded: false,
         useCSSTransforms: useCSSTransforms,
-        transformScale: transformScale,
-        resizableProps: resizableProps
+        transformScale: transformScale
       }, /*#__PURE__*/_react.default.createElement("div", null));
     }
     /**
