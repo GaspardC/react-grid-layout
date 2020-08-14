@@ -635,7 +635,7 @@ var ReactGridLayout = /*#__PURE__*/function (_React$Component) {
         useCSSTransforms: useCSSTransforms && mounted,
         usePercentages: !mounted,
         transformScale: transformScale,
-        resizableProps: resizableProps,
+        resizableProps: l.resizableProps,
         w: l.w,
         h: l.h,
         x: l.x,
