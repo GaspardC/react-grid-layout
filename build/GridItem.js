@@ -498,7 +498,7 @@ var GridItem = /*#__PURE__*/function (_React$Component) {
           w = _calcWH.w,
           h = _calcWH.h;
 
-      if (resizableProps && resizableProps.lockAspectRatio && (w === maxW || h === maxH)) {
+      if (resizableProps && resizableProps.lockAspectRatio) {
         // preserve ratio
         var prevRatio = this.props.w / this.props.h;
 
