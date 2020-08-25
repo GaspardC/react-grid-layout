@@ -568,13 +568,18 @@ export default class GridItem extends React.Component<Props, State> {
       (w === maxW || h === maxH)
     ) {
       // preserve ratio
-      const ratio = this.props.w / this.props.h;
+      const prevRatio = this.props.w / this.props.h;
       if (w === maxW) {
         w = maxW;
-        h = maxW / ratio;
+        h = maxW / prevRatio;
       } else {
         h = maxH;
-        w = maxH * ratio;
+        w = maxH * prevRatio;
+      }
+      //TODO: improve this workaround because the above code works only with max boundaries
+      const ratio = w / h;
+      if (prevRatio !== ratio) {
+        h = w / prevRatio;
       }
     }
 
