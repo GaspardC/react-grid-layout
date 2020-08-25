@@ -567,9 +567,15 @@ export default class GridItem extends React.Component<Props, State> {
       resizableProps.lockAspectRatio &&
       (w === maxW || h === maxH)
     ) {
-      //do not change size
-      w = this.props.w;
-      h = this.props.h;
+      // preserve ratio
+      const ratio = this.props.w / this.props.h;
+      if (w === maxW) {
+        w = maxW;
+        h = maxW / ratio;
+      } else {
+        h = maxH;
+        w = maxH * ratio;
+      }
     }
 
     // minW should be at least 1 (TODO propTypes validation?)
