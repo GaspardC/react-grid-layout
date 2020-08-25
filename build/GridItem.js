@@ -500,14 +500,21 @@ var GridItem = /*#__PURE__*/function (_React$Component) {
 
       if (resizableProps && resizableProps.lockAspectRatio && (w === maxW || h === maxH)) {
         // preserve ratio
-        var ratio = this.props.w / this.props.h;
+        var prevRatio = this.props.w / this.props.h;
 
         if (w === maxW) {
           w = maxW;
-          h = maxW / ratio;
+          h = maxW / prevRatio;
         } else {
           h = maxH;
-          w = maxH * ratio;
+          w = maxH * prevRatio;
+        } //TODO: improve this workaround because the above code works only with max boundaries
+
+
+        var ratio = w / h;
+
+        if (prevRatio !== ratio) {
+          h = w / prevRatio;
         }
       } // minW should be at least 1 (TODO propTypes validation?)
 
