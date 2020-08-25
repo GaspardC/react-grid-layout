@@ -550,7 +550,7 @@ export default class GridItem extends React.Component<Props, State> {
   ) {
     const handler = this.props[handlerName];
     if (!handler) return;
-    const { cols, x, y, i, maxH, minH } = this.props;
+    const { cols, x, y, i, maxH, minH, resizableProps } = this.props;
     let { minW, maxW } = this.props;
 
     // Get new XY
@@ -561,6 +561,16 @@ export default class GridItem extends React.Component<Props, State> {
       x,
       y
     );
+
+    if (
+      resizableProps &&
+      resizableProps.lockAspectRatio &&
+      (w === maxW || h === maxH)
+    ) {
+      //do not change size
+      w = this.props.w;
+      h = this.props.h;
+    }
 
     // minW should be at least 1 (TODO propTypes validation?)
     minW = Math.max(minW, 1);

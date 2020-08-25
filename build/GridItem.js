@@ -488,14 +488,21 @@ var GridItem = /*#__PURE__*/function (_React$Component) {
           y = _this$props7.y,
           i = _this$props7.i,
           maxH = _this$props7.maxH,
-          minH = _this$props7.minH;
+          minH = _this$props7.minH,
+          resizableProps = _this$props7.resizableProps;
       var _this$props8 = this.props,
           minW = _this$props8.minW,
           maxW = _this$props8.maxW; // Get new XY
 
       var _calcWH = (0, _calculateUtils.calcWH)(this.getPositionParams(), size.width, size.height, x, y),
           w = _calcWH.w,
-          h = _calcWH.h; // minW should be at least 1 (TODO propTypes validation?)
+          h = _calcWH.h;
+
+      if (resizableProps && resizableProps.lockAspectRatio && w === maxW) {
+        //do not change size
+        w = this.props.w;
+        h = this.props.h;
+      } // minW should be at least 1 (TODO propTypes validation?)
 
 
       minW = Math.max(minW, 1); // maxW should be at most (cols - x)
