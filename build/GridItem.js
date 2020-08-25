@@ -505,7 +505,7 @@ var GridItem = /*#__PURE__*/function (_React$Component) {
         if (w === maxW) {
           w = maxW;
           h = maxW / prevRatio;
-        } else {
+        } else if (h === maxH) {
           h = maxH;
           w = maxH * prevRatio;
         } //TODO: improve this workaround because the above code works only with max boundaries

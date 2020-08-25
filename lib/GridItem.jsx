@@ -572,7 +572,7 @@ export default class GridItem extends React.Component<Props, State> {
       if (w === maxW) {
         w = maxW;
         h = maxW / prevRatio;
-      } else {
+      } else if (h === maxH) {
         h = maxH;
         w = maxH * prevRatio;
       }
